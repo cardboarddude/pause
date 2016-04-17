@@ -1,0 +1,6 @@
+framework module Pods_Pause {
+  umbrella header "Pods-Pause-umbrella.h"
+
+  export *
+  module * { export * }
+}
