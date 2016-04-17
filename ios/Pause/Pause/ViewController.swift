@@ -97,10 +97,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
         if let itemCell = cell as? PAUItemCell {
             itemCell.nameLabel?.text = checkList?.items[indexPath.row]
         }
+        if let addCell = cell as? PAUAddItemCell {
+            addCell.nameField?.text = ""
+        }
         return cell
     }
     
     @IBAction func addItem(){
+        if newItemName == "" {
+            return
+        }
         checkList?.items.append(newItemName)
         newItemName = ""
         itemTable?.reloadData()
@@ -112,6 +118,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
         }
     }
 
+}
+
+class PAUAddItemCell: UITableViewCell {
+    
+    @IBOutlet var nameField: UITextField?
+    
 }
 
 class PAUItemCell: UITableViewCell {

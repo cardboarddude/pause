@@ -32,7 +32,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ySq-Gg-eUC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="88" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ySq-Gg-eUC">
                                 <rect key="frame" x="29" y="161" width="551" height="381"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -71,14 +71,14 @@
                                             <outlet property="nameLabel" destination="HGc-WT-2Uz" id="TGT-oj-VSj"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddItem" id="LNf-jD-OrO">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddItem" id="LNf-jD-OrO" customClass="PAUAddItemCell" customModule="Pause" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="116" width="551" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LNf-jD-OrO" id="2Z3-Qz-HIJ">
                                             <rect key="frame" x="0.0" y="0.0" width="551" height="87.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Z9-Xu-ySv">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name something you need!" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Z9-Xu-ySv">
                                                     <rect key="frame" x="48" y="13" width="495" height="61.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -104,6 +104,9 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="Kdm-IG-w6K" secondAttribute="bottom" id="sjz-vr-KlW"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameField" destination="4Z9-Xu-ySv" id="eov-fD-oUM"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
