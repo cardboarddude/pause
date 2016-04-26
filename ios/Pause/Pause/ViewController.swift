@@ -29,7 +29,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        checkList = PAUCheckList()
+        let lists: [PAUCheckList] = PAUListStore.getLists()
+        let list: PAUCheckList = lists.count > 0 ? lists[0] : PAUCheckList()
+        PAUListStore.putList(list)
+        checkList = list
+        
+        nameField?.text = checkList?.name
         
         fenceManager = PAUFenceManager()
         do {
@@ -121,7 +126,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
 }
 
 class PAUAddItemCell: UITableViewCell {
-    
+
     @IBOutlet var nameField: UITextField?
     
 }

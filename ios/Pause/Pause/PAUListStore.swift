@@ -10,8 +10,36 @@ import Foundation
 
 class PAUListStore {
     
-    static var checkLists: [String : PAUCheckList] = [:]
+    private static var checkLists: [PAUCheckList] = []
     
-    // TODO: Add safe getters and setters
+    static func getLists() -> [PAUCheckList] {
+        return checkLists
+    }
     
+    // Save the provided list against it's name
+    static func putList(checkList: PAUCheckList){
+        checkLists.append(checkList)
+    }
+    
+    // MARK: NSCoding
+
+    static func saveLists(){
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(checkLists, toFile: PAUCheckList.ArchiveURL.path!)
+        if !isSuccessfulSave {
+            print("Failed to save checklists...")
+        }
+    }
+    
+    static func loadLists() {
+        checkLists = []
+        if let loadedLists = loadListsHelper() {
+            for list in loadedLists {
+                putList(list)
+            }
+        }
+    }
+    
+    static func loadListsHelper() -> [PAUCheckList]? {
+        return NSKeyedUnarchiver.unarchiveObjectWithFile(PAUCheckList.ArchiveURL.path!) as? [PAUCheckList]
+    }
 }
