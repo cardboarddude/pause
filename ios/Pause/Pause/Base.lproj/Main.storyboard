@@ -43,12 +43,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="551" height="87.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HGc-WT-2Uz">
-                                                    <rect key="frame" x="73" y="8" width="470" height="71.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f1m-gt-V6z">
                                                     <rect key="frame" x="8" y="8" width="50" height="71.5"/>
                                                     <color key="backgroundColor" red="0.0" green="0.72545770200000004" blue="0.066955850090000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -56,19 +50,27 @@
                                                         <constraint firstAttribute="width" constant="50" id="mGd-in-efp"/>
                                                     </constraints>
                                                 </view>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x1c-Wo-kwf">
+                                                    <rect key="frame" x="68" y="8" width="465" height="71.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="nameFieldDidChange:" destination="mur-vk-2dN" eventType="editingChanged" id="bgx-Qw-sSe"/>
+                                                    </connections>
+                                                </textField>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="f1m-gt-V6z" firstAttribute="top" secondItem="FSF-bW-zeO" secondAttribute="topMargin" id="635-Fs-l8R"/>
-                                                <constraint firstItem="HGc-WT-2Uz" firstAttribute="leading" secondItem="f1m-gt-V6z" secondAttribute="trailing" constant="15" id="FFq-yz-OTw"/>
                                                 <constraint firstItem="f1m-gt-V6z" firstAttribute="leading" secondItem="FSF-bW-zeO" secondAttribute="leadingMargin" id="JLf-Fk-EbA"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="x1c-Wo-kwf" secondAttribute="trailing" constant="10" id="RMf-Gb-Biq"/>
                                                 <constraint firstItem="f1m-gt-V6z" firstAttribute="bottom" secondItem="FSF-bW-zeO" secondAttribute="bottomMargin" id="VJo-YV-YxT"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="HGc-WT-2Uz" secondAttribute="bottom" id="Xkg-9S-qGi"/>
-                                                <constraint firstItem="HGc-WT-2Uz" firstAttribute="top" secondItem="FSF-bW-zeO" secondAttribute="topMargin" id="bfk-j6-mdd"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="HGc-WT-2Uz" secondAttribute="trailing" id="mik-HS-lcg"/>
+                                                <constraint firstItem="x1c-Wo-kwf" firstAttribute="leading" secondItem="f1m-gt-V6z" secondAttribute="trailing" constant="10" id="ddV-uk-0Rc"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="x1c-Wo-kwf" secondAttribute="bottom" id="jsA-JH-iRr"/>
+                                                <constraint firstItem="x1c-Wo-kwf" firstAttribute="top" secondItem="FSF-bW-zeO" secondAttribute="topMargin" id="sXL-zN-ut6"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="nameLabel" destination="HGc-WT-2Uz" id="TGT-oj-VSj"/>
+                                            <outlet property="nameField" destination="x1c-Wo-kwf" id="bVR-de-zF0"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddItem" id="LNf-jD-OrO" customClass="PAUAddItemCell" customModule="Pause" customModuleProvider="target">
@@ -78,17 +80,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="551" height="87.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name something you need!" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Z9-Xu-ySv">
-                                                    <rect key="frame" x="48" y="13" width="495" height="61.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <action selector="textFieldDidChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="LGz-qt-mBp"/>
-                                                    </connections>
-                                                </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kdm-IG-w6K">
-                                                    <rect key="frame" x="8" y="8" width="30" height="71.5"/>
-                                                    <state key="normal" title="Add"/>
+                                                    <rect key="frame" x="234.5" y="8" width="82" height="71.5"/>
+                                                    <state key="normal" title="Add an Item"/>
                                                     <connections>
                                                         <action selector="addItem" destination="BYZ-38-t0r" eventType="touchUpInside" id="pC7-em-Ny8"/>
                                                     </connections>
@@ -96,17 +90,16 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Kdm-IG-w6K" firstAttribute="top" secondItem="2Z3-Qz-HIJ" secondAttribute="topMargin" id="3BM-og-0DL"/>
-                                                <constraint firstItem="4Z9-Xu-ySv" firstAttribute="leading" secondItem="Kdm-IG-w6K" secondAttribute="trailing" constant="10" id="AGg-Ep-aPI"/>
                                                 <constraint firstItem="Kdm-IG-w6K" firstAttribute="leading" secondItem="2Z3-Qz-HIJ" secondAttribute="leadingMargin" id="DLX-47-B6F"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="4Z9-Xu-ySv" secondAttribute="bottom" constant="5" id="KOG-Az-sHQ"/>
-                                                <constraint firstItem="4Z9-Xu-ySv" firstAttribute="trailing" secondItem="2Z3-Qz-HIJ" secondAttribute="trailingMargin" id="O3n-gq-6dV"/>
-                                                <constraint firstItem="4Z9-Xu-ySv" firstAttribute="top" secondItem="2Z3-Qz-HIJ" secondAttribute="topMargin" constant="5" id="Rgt-nC-ExI"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Kdm-IG-w6K" secondAttribute="bottom" id="sjz-vr-KlW"/>
+                                                <constraint firstItem="Kdm-IG-w6K" firstAttribute="centerX" secondItem="2Z3-Qz-HIJ" secondAttribute="centerX" id="ugu-qC-KB3"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="DLX-47-B6F"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="nameField" destination="4Z9-Xu-ySv" id="eov-fD-oUM"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

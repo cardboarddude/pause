@@ -22,8 +22,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
     
     @IBOutlet var nameField: UITextField?
     
-    var newItemName = ""
-    
     @IBOutlet var itemTable: UITableView?
     
     override func viewDidLoad() {
@@ -100,40 +98,36 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
         }
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
         if let itemCell = cell as? PAUItemCell {
-            itemCell.nameLabel?.text = checkList?.items[indexPath.row]
-        }
-        if let addCell = cell as? PAUAddItemCell {
-            addCell.nameField?.text = ""
+            itemCell.checkList = checkList
+            itemCell.index = indexPath.row
+            itemCell.nameField?.text = checkList?.items[indexPath.row]
         }
         return cell
     }
     
     @IBAction func addItem(){
-        if newItemName == "" {
-            return
-        }
-        checkList?.items.append(newItemName)
-        newItemName = ""
+        checkList?.items.append("")
         itemTable?.reloadData()
-    }
-    
-    @IBAction func textFieldDidChange(textField: UITextField) {
-        if let text = textField.text {
-            newItemName = text
-        }
     }
 
 }
 
 class PAUAddItemCell: UITableViewCell {
-
-    @IBOutlet var nameField: UITextField?
     
 }
 
 class PAUItemCell: UITableViewCell {
     
-    @IBOutlet var nameLabel: UILabel?
+    var checkList: PAUCheckList?
+    var index: Int = 0
+    
+    @IBOutlet var nameField: UITextField?
+    
+    @IBAction func nameFieldDidChange(textField: UITextField){
+        if let text = textField.text {
+                checkList?.items[index] = text
+        }
+    }
     
 }
 
