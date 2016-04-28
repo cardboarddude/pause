@@ -11,6 +11,25 @@ import Foundation
 class PAUListStore {
     
     private static var checkLists: [PAUCheckList] = []
+
+    private static var checkedItems: [String : [String : Bool]] = [:]
+    
+    static func isChecked(item: String, checkList: PAUCheckList) -> Bool {
+        if let items = checkedItems[checkList.name], let checked = items[item] {
+                return checked
+        }
+        return false
+    }
+    
+    static func setItemChecked(checked: Bool, item: String, checkList: PAUCheckList) {
+        if let items = checkedItems[checkList.name] {
+            var updatedItems = items
+            updatedItems[item] = checked
+            checkedItems[checkList.name] = updatedItems
+        } else {
+            checkedItems[checkList.name] = [item : checked]
+        }
+    }
     
     static func getLists() -> [PAUCheckList] {
         return checkLists
@@ -24,9 +43,13 @@ class PAUListStore {
     // MARK: NSCoding
 
     static func saveLists(){
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(checkLists, toFile: PAUCheckList.ArchiveURL.path!)
+        var isSuccessfulSave = NSKeyedArchiver.archiveRootObject(checkLists, toFile: ChecklistArchiveURL.path!)
         if !isSuccessfulSave {
             print("Failed to save checklists...")
+        }
+        isSuccessfulSave = NSKeyedArchiver.archiveRootObject(checkedItems, toFile: CheckedItemArchiveURL.path!)
+        if !isSuccessfulSave {
+            print("Failed to save checked items..")
         }
     }
     
@@ -37,9 +60,19 @@ class PAUListStore {
                 putList(list)
             }
         }
+        
+        if let ci = NSKeyedUnarchiver.unarchiveObjectWithFile(CheckedItemArchiveURL.path!) as? [String: [String : Bool]] {
+            checkedItems = ci
+        }
     }
     
     static func loadListsHelper() -> [PAUCheckList]? {
-        return NSKeyedUnarchiver.unarchiveObjectWithFile(PAUCheckList.ArchiveURL.path!) as? [PAUCheckList]
+        return NSKeyedUnarchiver.unarchiveObjectWithFile(ChecklistArchiveURL.path!) as? [PAUCheckList]
     }
+    
+    // MARK: Archiving Paths
+    
+    static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+    static let ChecklistArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("checklists")
+    static let CheckedItemArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("checkeditems")
 }

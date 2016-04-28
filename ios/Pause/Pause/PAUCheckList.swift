@@ -62,8 +62,4 @@ class PAUCheckList : NSObject, NSCoding {
         self.init(name: name, coordinates: CLLocationCoordinate2DMake(lat, lng), radius: radius, items:items)
     }
     
-    // MARK: Archiving Paths
-    
-    static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
-    static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("checklists")
 }

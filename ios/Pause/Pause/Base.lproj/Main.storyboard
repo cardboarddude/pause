@@ -21,7 +21,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJJ-bk-9Cq">
                                 <rect key="frame" x="29" y="120" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a name for your checklist" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NCs-gi-e57">
@@ -43,13 +43,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="551" height="87.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f1m-gt-V6z">
-                                                    <rect key="frame" x="8" y="8" width="50" height="71.5"/>
-                                                    <color key="backgroundColor" red="0.0" green="0.72545770200000004" blue="0.066955850090000005" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="50" id="mGd-in-efp"/>
-                                                    </constraints>
-                                                </view>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x1c-Wo-kwf">
                                                     <rect key="frame" x="68" y="8" width="465" height="71.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -58,18 +51,25 @@
                                                         <action selector="nameFieldDidChange:" destination="mur-vk-2dN" eventType="editingChanged" id="bgx-Qw-sSe"/>
                                                     </connections>
                                                 </textField>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RMN-0X-Wb1">
+                                                    <rect key="frame" x="8" y="28" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="itemChecked:" destination="mur-vk-2dN" eventType="valueChanged" id="OGa-Gu-OJF"/>
+                                                    </connections>
+                                                </switch>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="f1m-gt-V6z" firstAttribute="top" secondItem="FSF-bW-zeO" secondAttribute="topMargin" id="635-Fs-l8R"/>
-                                                <constraint firstItem="f1m-gt-V6z" firstAttribute="leading" secondItem="FSF-bW-zeO" secondAttribute="leadingMargin" id="JLf-Fk-EbA"/>
+                                                <constraint firstItem="RMN-0X-Wb1" firstAttribute="top" secondItem="FSF-bW-zeO" secondAttribute="topMargin" constant="20" id="N7h-C5-0do"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="x1c-Wo-kwf" secondAttribute="trailing" constant="10" id="RMf-Gb-Biq"/>
-                                                <constraint firstItem="f1m-gt-V6z" firstAttribute="bottom" secondItem="FSF-bW-zeO" secondAttribute="bottomMargin" id="VJo-YV-YxT"/>
-                                                <constraint firstItem="x1c-Wo-kwf" firstAttribute="leading" secondItem="f1m-gt-V6z" secondAttribute="trailing" constant="10" id="ddV-uk-0Rc"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="x1c-Wo-kwf" secondAttribute="bottom" id="jsA-JH-iRr"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="RMN-0X-Wb1" secondAttribute="bottom" constant="20.5" id="oAf-b4-WlM"/>
                                                 <constraint firstItem="x1c-Wo-kwf" firstAttribute="top" secondItem="FSF-bW-zeO" secondAttribute="topMargin" id="sXL-zN-ut6"/>
+                                                <constraint firstItem="x1c-Wo-kwf" firstAttribute="leading" secondItem="RMN-0X-Wb1" secondAttribute="trailing" constant="11" id="ttn-a8-Fqy"/>
+                                                <constraint firstItem="RMN-0X-Wb1" firstAttribute="leading" secondItem="FSF-bW-zeO" secondAttribute="leadingMargin" id="xcY-DV-Gb1"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="checkedSwitch" destination="RMN-0X-Wb1" id="qR8-Dx-ilU"/>
                                             <outlet property="nameField" destination="x1c-Wo-kwf" id="bVR-de-zF0"/>
                                         </connections>
                                     </tableViewCell>
@@ -116,7 +116,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yj0-Bx-6bc">
                                 <rect key="frame" x="87" y="120" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

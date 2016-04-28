@@ -68,6 +68,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
         showLocation()
     }
     
+    // TODO: Update fences whenever we set the home location
     @IBAction func addFence(){
         saveName()
         if let cl = self.checkList {
@@ -97,10 +98,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
             cellIdentifier = "Item"
         }
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
-        if let itemCell = cell as? PAUItemCell {
-            itemCell.checkList = checkList
-            itemCell.index = indexPath.row
-            itemCell.nameField?.text = checkList?.items[indexPath.row]
+        if let itemCell = cell as? PAUItemCell, let c = checkList {
+            itemCell.setItem(c, index: indexPath.row)
         }
         return cell
     }
@@ -117,11 +116,25 @@ class PAUAddItemCell: UITableViewCell {
 }
 
 class PAUItemCell: UITableViewCell {
-    
+
     var checkList: PAUCheckList?
     var index: Int = 0
     
+    func setItem(checkList: PAUCheckList, index: Int){
+        self.checkList = checkList
+        self.index = index
+        nameField?.text = checkList.items[index]
+        checkedSwitch?.on = PAUListStore.isChecked(checkList.items[index], checkList: checkList)
+    }
+
+    @IBOutlet var checkedSwitch: UISwitch?
     @IBOutlet var nameField: UITextField?
+    
+    @IBAction func itemChecked(sender: UISwitch){
+        if let c = checkList {
+            PAUListStore.setItemChecked(sender.on, item: c.items[index], checkList: c)
+        }
+    }
     
     @IBAction func nameFieldDidChange(textField: UITextField){
         if let text = textField.text {
